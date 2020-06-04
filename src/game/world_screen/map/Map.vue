@@ -13,7 +13,10 @@
                         :style="{...tileStyle,...get_tile_style(currentTilesInfo[tile]) }"
                 >
                     <fragment v-if="currentTilesInfo[tile] && currentTilesInfo[tile].sprite">
-                        2
+                            <Tree
+                                    v-if="currentTilesInfo[tile].sprite.form === 'tree'"
+                                    :style="{fill: currentTilesInfo[tile].sprite.fill}"
+                            />
                     </fragment>
                 </div>
             </div>
@@ -24,9 +27,13 @@
 <script>
   import {MAP_SCREEN_HEIGHT, TILE_SIZE} from "@/game/world_screen/world_constants";
   import get_tile_style from "./get_tile_style";
+  import Tree from "./tile_sprites/Tree.svg?vue-template";
 
   export default {
     name: "Map",
+    components:{
+      Tree,
+    },
     data() {
       return {
         rowStyle: {height: `${TILE_SIZE}px`},
