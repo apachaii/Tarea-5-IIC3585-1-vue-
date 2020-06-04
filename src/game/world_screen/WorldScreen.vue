@@ -7,7 +7,7 @@
 </template>
 
 <script>
-  import Map from "./Map";
+  import Map from "./map";
   import {MAP_SCREEN_HEIGHT, MAP_SCREEN_WIDTH} from "./world_constants";
 
   export default {

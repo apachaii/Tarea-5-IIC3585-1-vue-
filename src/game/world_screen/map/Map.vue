@@ -7,12 +7,14 @@
                     :key="row_index"
                     :style="rowStyle"
             >
-                <div
+                <div class="tile"
                         v-for="(tile, tile_index) in levelRow"
                         :key="tile_index"
-                        :style="tileStyle"
+                        :style="{...tileStyle,...get_tile_style(currentTilesInfo[tile]) }"
                 >
-                    {{tile}}
+                    <fragment v-if="currentTilesInfo[tile] && currentTilesInfo[tile].sprite">
+                        2
+                    </fragment>
                 </div>
             </div>
         </div>
@@ -21,6 +23,7 @@
 
 <script>
   import {MAP_SCREEN_HEIGHT, TILE_SIZE} from "@/game/world_screen/world_constants";
+  import get_tile_style from "./get_tile_style";
 
   export default {
     name: "Map",
@@ -30,9 +33,11 @@
         tileStyle: {
           height: `${TILE_SIZE}px`,
           width: `${TILE_SIZE}px`,
-          display: "inline-flex",
         },
       };
+    },
+    methods:{
+      get_tile_style,
     },
     computed: {
       currentLevelMatrix() {
@@ -69,6 +74,10 @@
 
         left: 0; /* todo remove */
         background-color: skyblue; /* todo remove */
+    }
+
+    .tile{
+        display: inline-flex;
     }
 
 </style>
