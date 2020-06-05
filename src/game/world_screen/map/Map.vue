@@ -1,6 +1,6 @@
 <template>
   <fragment>
-    <div id="background"/>
+    <div id="background" :style="currentBackground"/>
     <div id="level_grid" :style="gridStyle">
       <div
         v-for="(levelRow, row_index) in currentLevelMatrix"
@@ -63,6 +63,9 @@
           width: map_width,
         }
       },
+      currentBackground() {
+        return this.$store.getters.currentBackground;
+      },
     },
   }
 </script>
@@ -80,7 +83,6 @@
     height: 100%;
 
     left: 0; /* todo remove */
-    background-color: skyblue; /* todo remove */
   }
 
   .tile {

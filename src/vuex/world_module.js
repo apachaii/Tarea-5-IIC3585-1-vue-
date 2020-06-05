@@ -10,7 +10,7 @@ const initial_state = {
 
   map_scroll: 0,
 
-  events_active_state: [],
+  events_active_state: [true,true,true,true,true,true,true,true,],
 
   current_battle_index: null,
 }
@@ -22,7 +22,6 @@ const world_module = {
       Object.assign(state, payload);
     }
   },
-  actions: {},
   getters: {
     currentLevelMatrix: state => {
       const {level} = state;
@@ -54,6 +53,21 @@ const world_module = {
         character_vertical_position,
         player_face_direction
       };
+    },
+    currentBackground: state =>{
+      const {level} = state;
+      const levelInfo = get_level(level);
+      return levelInfo.background;
+    },
+    currentEvents: state =>{
+      const {level, events_active_state} = state;
+      const levelInfo = get_level(level);
+      const {events} = levelInfo;
+      return events.map(
+        (event, index) => events_active_state[index]
+          ? event
+          : {}
+      );
     },
   }
 }
