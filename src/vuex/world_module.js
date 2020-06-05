@@ -1,4 +1,5 @@
 import get_level from "@/game/world_screen/levels";
+import {CHANGE_POSITION} from "@/vuex/mutations_types";
 
 const initial_state = {
   level: 1,
@@ -9,35 +10,51 @@ const initial_state = {
 
   map_scroll: 0,
 
-  events_active_state:[],
+  events_active_state: [],
 
   current_battle_index: null,
 }
 
 const world_module = {
   state: () => (initial_state),
-  mutations: {},
+  mutations: {
+    [CHANGE_POSITION](state, payload) {
+      Object.assign(state, payload);
+    }
+  },
   actions: {},
   getters: {
     currentLevelMatrix: state => {
-      const { level } = state;
+      const {level} = state;
       const levelInfo = get_level(level);
       return levelInfo.tiles;
     },
     currentTilesInfo: state => {
-      const { level } = state;
-      const { used_tiles } = get_level(level);
+      const {level} = state;
+      const {used_tiles} = get_level(level);
       return used_tiles;
     },
     currentLevelWidth: state => {
-      const { level } = state;
-      const { width } = get_level(level);
+      const {level} = state;
+      const {width} = get_level(level);
       return width;
     },
     currentScroll: state => {
-      const { map_scroll } = state;
+      const {map_scroll} = state;
       return map_scroll;
-    }
+    },
+    currentPlayerPosition: state => {
+      const {
+        character_horizontal_position,
+        character_vertical_position,
+        player_face_direction
+      } = state;
+      return {
+        character_horizontal_position,
+        character_vertical_position,
+        player_face_direction
+      };
+    },
   }
 }
 
