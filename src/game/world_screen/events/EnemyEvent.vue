@@ -1,18 +1,17 @@
 <template>
   <div :style="{...tileSize,...event_position,...{position: 'absolute'}}">
-    <!--<Dog/>-->
-    <div style="background-color: red; height: 40px; width: 40px;"/>
+    <Dog viewBox="0 0 512 512" :style="{...tileSize}"/>
   </div>
 </template>
 
 <script>
   import {TILE_SIZE} from "../world_constants";
-  // import Dog from "../../../assets/pet-bottle.svg?vue-template"
+  import Dog from "../../../assets/pet-bottle.svg?vue-template"
 
   export default {
     name: "EnemyEvent",
     components: {
-      // Dog,
+      Dog,
     },
     props:{
       horizontal_position: {
