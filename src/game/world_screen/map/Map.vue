@@ -1,27 +1,27 @@
 <template>
-    <fragment>
-        <div id="background"/>
-        <div id="level_grid" :style="gridStyle">
-            <div
-                    v-for="(levelRow, row_index) in currentLevelMatrix"
-                    :key="row_index"
-                    :style="rowStyle"
-            >
-                <div class="tile"
-                        v-for="(tile, tile_index) in levelRow"
-                        :key="tile_index"
-                        :style="{...tileStyle,...get_tile_style(currentTilesInfo[tile]) }"
-                >
-                    <fragment v-if="currentTilesInfo[tile] && currentTilesInfo[tile].sprite">
-                            <Tree
-                                    v-if="currentTilesInfo[tile].sprite.form === 'tree'"
-                                    :style="{fill: currentTilesInfo[tile].sprite.fill}"
-                            />
-                    </fragment>
-                </div>
-            </div>
+  <fragment>
+    <div id="background"/>
+    <div id="level_grid" :style="gridStyle">
+      <div
+        v-for="(levelRow, row_index) in currentLevelMatrix"
+        :key="row_index"
+        :style="rowStyle"
+      >
+        <div class="tile"
+             v-for="(tile, tile_index) in levelRow"
+             :key="tile_index"
+             :style="{...tileStyle,...get_tile_style(currentTilesInfo[tile]) }"
+        >
+          <fragment v-if="currentTilesInfo[tile] && currentTilesInfo[tile].sprite">
+            <Tree
+              v-if="currentTilesInfo[tile].sprite.form === 'tree'"
+              :style="{fill: currentTilesInfo[tile].sprite.fill}"
+            />
+          </fragment>
         </div>
-    </fragment>
+      </div>
+    </div>
+  </fragment>
 </template>
 
 <script>
@@ -31,7 +31,7 @@
 
   export default {
     name: "Map",
-    components:{
+    components: {
       Tree,
     },
     data() {
@@ -43,7 +43,7 @@
         },
       };
     },
-    methods:{
+    methods: {
       get_tile_style,
     },
     computed: {
@@ -55,7 +55,7 @@
       },
       gridStyle() {
         const getters = this.$store.getters;
-        const map_scroll = `${TILE_SIZE * getters.currentScroll}px`;
+        const map_scroll = `${getters.currentScroll}px`;
         const map_width = `${TILE_SIZE * getters.currentLevelWidth}px`;
         return {
           left: map_scroll,
@@ -68,23 +68,23 @@
 </script>
 
 <style scoped>
-    #background {
-        position: absolute;
-        height: 100%;
-        width: 100%;
+  #background {
+    position: absolute;
+    height: 100%;
+    width: 100%;
 
-    }
+  }
 
-    #level_grid {
-        position: absolute;
-        height: 100%;
+  #level_grid {
+    position: absolute;
+    height: 100%;
 
-        left: 0; /* todo remove */
-        background-color: skyblue; /* todo remove */
-    }
+    left: 0; /* todo remove */
+    background-color: skyblue; /* todo remove */
+  }
 
-    .tile{
-        display: inline-flex;
-    }
+  .tile {
+    display: inline-flex;
+  }
 
 </style>

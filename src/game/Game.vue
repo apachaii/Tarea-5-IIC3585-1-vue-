@@ -1,5 +1,5 @@
 <template>
-    <WorldScreen/>
+  <WorldScreen/>
 </template>
 
 <script>
