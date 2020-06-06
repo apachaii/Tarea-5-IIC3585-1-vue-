@@ -7,6 +7,7 @@
     >
       <PlayerBox/>
       <EnemyBox/>
+      <InfoBox/>
     </div>
   </fragment>
 </template>
@@ -18,10 +19,11 @@
   } from "./battle_constants";
   import PlayerBox from "@/game/screens/battle_screen/PlayerBox";
   import EnemyBox from "@/game/screens/battle_screen/EnemyBox";
+  import InfoBox from "@/game/screens/battle_screen/InfoBox";
 
   export default {
     name: "BattleScreen",
-    components: {EnemyBox, ControlsBar, PlayerBox, },
+    components: {InfoBox, EnemyBox, ControlsBar, PlayerBox, },
     data(){
       return{
         box_dimensions: {
@@ -37,7 +39,5 @@
   #battle_boxes_container{
     margin: 0 auto;
     position: relative;
-
-    background-color: aqua;
   }
 </style>

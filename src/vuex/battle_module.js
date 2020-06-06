@@ -18,6 +18,7 @@ const player_module = {
       const { enemy_life, enemy_total_life } = state;
       return { enemy_life, enemy_total_life };
     },
+    battle_info: state => state.battle_text
   },
   mutations:{},
 };
