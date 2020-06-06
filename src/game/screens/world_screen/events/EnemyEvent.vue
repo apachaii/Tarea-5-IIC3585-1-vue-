@@ -6,7 +6,9 @@
       ...{position: 'absolute'},
     }"
   >
-    <Dog viewBox="0 0 512 512" :style="{...tileSize}"/>
+    <Dog
+      viewBox="0 0 512 512"
+      :style="{...tileSize}"/>
   </div>
 </template>
 

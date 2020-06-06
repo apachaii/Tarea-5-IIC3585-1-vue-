@@ -1,7 +1,7 @@
 <template>
   <div
-    class="controls_bar"
-    :style="{width: BATTLE_SCREEN_WIDTH}"
+    id="controls_bar"
+    :style="{width: `${BATTLE_SCREEN_WIDTH}px`}"
   >
     <p>[z] for attack; [x] for scape;</p>
   </div>

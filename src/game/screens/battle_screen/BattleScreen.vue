@@ -6,6 +6,7 @@
       :style="box_dimensions"
     >
       <PlayerBox/>
+      <EnemyBox/>
     </div>
   </fragment>
 </template>
@@ -16,10 +17,11 @@
     BATTLE_SCREEN_HEIGHT, BATTLE_SCREEN_WIDTH
   } from "./battle_constants";
   import PlayerBox from "@/game/screens/battle_screen/PlayerBox";
+  import EnemyBox from "@/game/screens/battle_screen/EnemyBox";
 
   export default {
     name: "BattleScreen",
-    components: {ControlsBar, PlayerBox, },
+    components: {EnemyBox, ControlsBar, PlayerBox, },
     data(){
       return{
         box_dimensions: {

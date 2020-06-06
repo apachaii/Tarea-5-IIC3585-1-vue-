@@ -47,6 +47,5 @@
 <style scoped>
   #player {
     position: absolute;
-    text-align: left;
   }
 </style>

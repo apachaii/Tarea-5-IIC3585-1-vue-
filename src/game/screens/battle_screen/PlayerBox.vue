@@ -57,8 +57,8 @@
           current_life,
         }= this.$store.getters.currentLife;
         return {
-          total_life: max_life,
           current_life,
+          total_life: max_life,
         };
       },
     },
@@ -67,7 +67,6 @@
 
 <style scoped>
   #player_box{
-    text-align: left;
     position: absolute;
   }
 </style>
