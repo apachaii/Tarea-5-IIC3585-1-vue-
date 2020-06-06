@@ -25,6 +25,7 @@ const world_module = {
       const level_one = get_level(1);
       const events_active_state = new Array(level_one.events.length).fill(true);
       Object.assign(state, {
+        ...initial_state,
         level: 1,
         ...level_one.start_position,
         events_active_state,

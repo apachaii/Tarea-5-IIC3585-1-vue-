@@ -7,8 +7,21 @@
           horizontal_position: event.horizontal_position,
           vertical_position: event.vertical_position,
         }"/>
-       <!--<p v-else-if="event.type === EVENTS_TYPES.NEXT_LEVEL">{{EVENTS_TYPES.NEXT_LEVEL}}</p>
-      <p v-else-if="event.type === EVENTS_TYPES.UPGRADE">{{EVENTS_TYPES.UPGRADE}}</p> -->
+      <UpgradeEvent
+        v-else-if="event.type === EVENTS_TYPES.UPGRADE"
+        v-bind="{
+          level: event.level,
+          upgrade_type: event.upgrade_type,
+          horizontal_position: event.horizontal_position,
+          vertical_position: event.vertical_position,
+        }"/>
+      <NextLevelEvent
+        v-else-if="event.type === EVENTS_TYPES.UPGRADE"
+        v-bind="{
+          horizontal_position: event.horizontal_position,
+          vertical_position: event.vertical_position,
+        }"
+      />
     </fragment>
   </div>
 </template>
@@ -17,10 +30,12 @@
   import {EVENTS_TYPES} from '@/game/screens/world_screen/world_constants';
   import {TILE_SIZE} from "@/game/screens/world_screen/world_constants";
   import EnemyEvent from "@/game/screens/world_screen/events/EnemyEvent";
+  import UpgradeEvent from "@/game/screens/world_screen/events/UpgradeEvent";
+  import NextLevelEvent from "@/game/screens/world_screen/events/NextLevelEvent";
 
   export default {
     name: "Events",
-    components: {EnemyEvent},
+    components: {NextLevelEvent, UpgradeEvent, EnemyEvent},
     data() {
       return {EVENTS_TYPES};
     },
