@@ -1,5 +1,5 @@
 import get_level from "@/game/screens/world_screen/levels";
-import {CHANGE_POSITION} from "@/vuex/mutations_types";
+import {CHANGE_POSITION, START_GAME} from "@/vuex/mutations_types";
 
 const initial_state = {
   level: 1,
@@ -10,7 +10,7 @@ const initial_state = {
 
   map_scroll: 0,
 
-  events_active_state: [true,true,true,true,true,true,true,true,],
+  events_active_state: [],
 
   current_battle_index: null,
 }
@@ -20,7 +20,16 @@ const world_module = {
   mutations: {
     [CHANGE_POSITION](state, payload) {
       Object.assign(state, payload);
-    }
+    },
+    [START_GAME](state){
+      const level_one = get_level(1);
+      const events_active_state = new Array(level_one.events.length).fill(true);
+      Object.assign(state, {
+        level: 1,
+        ...level_one.start_position,
+        events_active_state,
+      });
+    },
   },
   getters: {
     currentLevelMatrix: state => {
