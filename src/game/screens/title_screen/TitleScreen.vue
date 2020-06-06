@@ -4,7 +4,7 @@
     :style="screen_style"
   >
     <h1>Car vs Dogs</h1>
-    <h2>React Edition</h2>
+    <h2>Vue Edition</h2>
     <p>Press [space] to start</p>
   </div>
 </template>

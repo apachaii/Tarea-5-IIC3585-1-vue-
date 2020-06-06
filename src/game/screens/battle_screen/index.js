@@ -1,3 +1,4 @@
 import BattleScreen from "./BattleScreen";
+import battle from "./battle";
 
-export default BattleScreen;
+export default battle(BattleScreen);

@@ -6,7 +6,7 @@ const initial_state = {
 };
 
 const screen_module = {
-  state: () => (initial_state),
+  state: () => ({...initial_state}),
   getters: {
     currentScreen: state => {
       const { screen } = state;

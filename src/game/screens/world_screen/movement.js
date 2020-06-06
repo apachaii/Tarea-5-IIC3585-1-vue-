@@ -1,5 +1,5 @@
 import store from "@/vuex/app_store";
-import {CHANGE_POSITION, START_BATTLE} from "@/vuex/mutations_types";
+import {CHANGE_POSITION, GET_UPGRADE, START_BATTLE} from "@/vuex/mutations_types";
 
 import {
   EVENTS_TYPES,
@@ -199,8 +199,7 @@ export default function handle_movement(world) {
     // execute events
     const events = store.getters.currentEvents;
     const  final_real_horizontal_position = new_horizontal_position - map_scroll;
-    // events.forEach((event, index) => {
-    events.forEach(event => {
+    events.forEach((event, index) => {
 
       if (event.type) {
         const {horizontal_position, vertical_position, type} = event;
@@ -217,30 +216,25 @@ export default function handle_movement(world) {
             case (EVENTS_TYPES.ENEMY):
               store.commit({
                 type: START_BATTLE,
+                enemy_level: event.level,
+                starting_text: event.starting_text,
+                current_battle_index: index,
+                character_horizontal_position: event.return_horizontal_position * TILE_SIZE,
+                character_vertical_position: event.return_vertical_position * TILE_SIZE,
               });
-
-              /*store.dispatch({
-                type: START_BATTLE,
-                payload: {
-                  enemy_level: event.level,
-                  starting_text: event.starting_text,
-                  current_battle_index: index,
-                  character_horizontal_position: event.return_horizontal_position * TILE_SIZE,
-                  character_vertical_position: event.return_vertical_position * TILE_SIZE,
-                }
-              });*/
               break;
 
-            /*case (EVENTS_TYPES.UPGRADE):
-              store.dispatch({
+            case (EVENTS_TYPES.UPGRADE):
+              console.log(event)
+              store.commit({
                 type: GET_UPGRADE,
-                payload: {
-                  ...event,
-                  index,
-                }
+                upgrade_type: event.upgrade_type,
+                level: event.level,
+                index,
               });
               break;
 
+              /*
             case (EVENTS_TYPES.NEXT_LEVEL):
               store.dispatch({
                 type: NEXT_LEVEL,

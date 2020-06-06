@@ -3,7 +3,7 @@ import Vuex from 'vuex';
 
 import world_module from "@/vuex/world_module";
 import screen_module from "@/vuex/screen_module";
-import player_module from "@/vuex/player_reducer";
+import player_module from "@/vuex/player_module";
 import battle_module from "@/vuex/battle_module";
 
 Vue.use(Vuex);

@@ -1,5 +1,5 @@
 import get_level from "@/game/screens/world_screen/levels";
-import {CHANGE_POSITION, START_GAME} from "@/vuex/mutations_types";
+import {CHANGE_POSITION, GET_UPGRADE, NEXT_LEVEL, START_BATTLE, START_GAME, WIN_BATTLE} from "@/vuex/mutations_types";
 
 const initial_state = {
   level: 1,
@@ -16,7 +16,7 @@ const initial_state = {
 }
 
 const world_module = {
-  state: () => (initial_state),
+  state: () => ({...initial_state}),
   mutations: {
     [CHANGE_POSITION](state, payload) {
       Object.assign(state, payload);
@@ -30,6 +30,27 @@ const world_module = {
         ...level_one.start_position,
         events_active_state,
       });
+    },
+    [NEXT_LEVEL](){},
+    [START_BATTLE](state, payload){
+      Object.assign(state,{
+        current_battle_index: payload.current_battle_index,
+        character_horizontal_position: payload.character_horizontal_position + state.map_scroll,
+        character_vertical_position: payload.character_vertical_position,
+      })
+    },
+    [WIN_BATTLE](state){
+      const { events_active_state, current_battle_index } = state;
+      const new_events_active_state = [...events_active_state];
+      new_events_active_state[current_battle_index] = false;
+      state.events_active_state = new_events_active_state;
+    },
+    [GET_UPGRADE](state, payload){
+      const { index } = payload;
+      const { events_active_state } = state;
+      const new_events_active_state = [...events_active_state];
+      new_events_active_state[index] = false
+      state.events_active_state = new_events_active_state;
     },
   },
   getters: {
