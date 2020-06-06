@@ -21,13 +21,6 @@ export default function handle_start(start) {
       store.commit({
         type: START_GAME,
       });
-      /*
-      store.dispatch(
-        {
-          type:START_GAME,
-        }
-      )
-      */
     }
   })
 

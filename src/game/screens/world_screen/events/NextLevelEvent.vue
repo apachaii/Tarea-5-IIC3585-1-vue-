@@ -8,7 +8,6 @@
       :style="sprite_style"
     />
   </div>
-  
 </template>
 
 <script>
@@ -19,6 +18,16 @@
     name: "NextLevelEvent",
     components: {
       Next,
+    },
+    props:{
+      horizontal_position: {
+        type: Number,
+        required: true
+      },
+      vertical_position: {
+        type: Number,
+        required: true
+      },
     },
     computed:{
       event_style(){

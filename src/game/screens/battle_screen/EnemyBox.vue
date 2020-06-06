@@ -1,18 +1,16 @@
 <template>
   <div id="enemy_box" :style="enemy_box_style">
-    <fragment v-if="!successful_fetch">
-      <Dog
-        viewBox="0 0 512 512"
-        class="dog"
-      />
-    </fragment>
-    <fragment v-if="successful_fetch">
-      <img
-        :src="image"
-        alt="A dog"
-        class="dog"
-      />
-    </fragment>
+    <Dog
+      v-if="!successful_fetch"
+      viewBox="0 0 512 512"
+      class="dog"
+    />
+    <img
+      v-if="successful_fetch"
+      :src="image"
+      alt="A dog"
+      class="dog"
+    />
     <LifeBox
       v-bind="enemy_life"
     />

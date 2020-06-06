@@ -31,7 +31,16 @@ const world_module = {
         events_active_state,
       });
     },
-    [NEXT_LEVEL](){},
+    [NEXT_LEVEL](state, payload){
+      const {level} = payload;
+      const current_level = get_level(level);
+      const events_active_state = new Array(current_level.events.length).fill(true);
+      Object.assign(state,{
+        level,
+        ...current_level.start_position,
+        events_active_state,
+      });
+    },
     [START_BATTLE](state, payload){
       Object.assign(state,{
         current_battle_index: payload.current_battle_index,

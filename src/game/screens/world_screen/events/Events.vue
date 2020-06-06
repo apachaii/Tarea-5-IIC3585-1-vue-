@@ -1,28 +1,21 @@
 <template>
   <div id="events_screen" :style="eventsMapStyle">
-    <fragment v-for="(event,index) in currentEvents" :key="index">
+    <div v-for="(event,index) in currentEvents" :key="index">
       <EnemyEvent
         v-if="event.type === EVENTS_TYPES.ENEMY"
-        v-bind="{
-          horizontal_position: event.horizontal_position,
-          vertical_position: event.vertical_position,
-        }"/>
+        v-bind="{...eventSize(event)}"/>
       <UpgradeEvent
         v-else-if="event.type === EVENTS_TYPES.UPGRADE"
         v-bind="{
           level: event.level,
           upgrade_type: event.upgrade_type,
-          horizontal_position: event.horizontal_position,
-          vertical_position: event.vertical_position,
+          ...eventSize(event),
         }"/>
       <NextLevelEvent
-        v-else-if="event.type === EVENTS_TYPES.UPGRADE"
-        v-bind="{
-          horizontal_position: event.horizontal_position,
-          vertical_position: event.vertical_position,
-        }"
+        v-else-if="event.type === EVENTS_TYPES.NEXT_LEVEL"
+        v-bind="{...eventSize(event)}"
       />
-    </fragment>
+    </div>
   </div>
 </template>
 
@@ -47,11 +40,19 @@
         return {
           left: map_scroll,
           width: map_width,
-        }
+        };
       },
       currentEvents(){
         return this.$store.getters.currentEvents;
       }
+    },
+    methods:{
+      eventSize(event){
+        return{
+          horizontal_position: event.horizontal_position,
+          vertical_position: event.vertical_position,
+        };
+      },
     },
   }
 </script>

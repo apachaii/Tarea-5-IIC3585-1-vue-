@@ -1,5 +1,5 @@
 import store from "@/vuex/app_store";
-import {CHANGE_POSITION, GET_UPGRADE, START_BATTLE} from "@/vuex/mutations_types";
+import {CHANGE_POSITION, GET_UPGRADE, NEXT_LEVEL, START_BATTLE} from "@/vuex/mutations_types";
 
 import {
   EVENTS_TYPES,
@@ -225,7 +225,6 @@ export default function handle_movement(world) {
               break;
 
             case (EVENTS_TYPES.UPGRADE):
-              console.log(event)
               store.commit({
                 type: GET_UPGRADE,
                 upgrade_type: event.upgrade_type,
@@ -234,15 +233,12 @@ export default function handle_movement(world) {
               });
               break;
 
-              /*
             case (EVENTS_TYPES.NEXT_LEVEL):
-              store.dispatch({
+              store.commit({
                 type: NEXT_LEVEL,
-                payload:{
-                  ...event,
-                }
+                level: event.level,
               });
-              break;*/
+              break;
 
             default:
               return;
@@ -250,7 +246,6 @@ export default function handle_movement(world) {
         }
       }
     });
-
   }
 
   return world;
