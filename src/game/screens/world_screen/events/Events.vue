@@ -14,9 +14,9 @@
 </template>
 
 <script>
-  import {EVENTS_TYPES} from '@/game/world_screen/world_constants';
-  import {TILE_SIZE} from "@/game/world_screen/world_constants";
-  import EnemyEvent from "@/game/world_screen/events/EnemyEvent";
+  import {EVENTS_TYPES} from '@/game/screens/world_screen/world_constants';
+  import {TILE_SIZE} from "@/game/screens/world_screen/world_constants";
+  import EnemyEvent from "@/game/screens/world_screen/events/EnemyEvent";
 
   export default {
     name: "Events",

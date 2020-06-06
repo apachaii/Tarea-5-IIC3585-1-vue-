@@ -1,4 +1,4 @@
-import get_level from "@/game/world_screen/levels";
+import get_level from "@/game/screens/world_screen/levels";
 import {CHANGE_POSITION} from "@/vuex/mutations_types";
 
 const initial_state = {

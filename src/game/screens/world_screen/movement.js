@@ -1,8 +1,8 @@
 import store from "@/vuex/app_store";
-import {WORLD_SCREEN} from "@/game/screen_constants";
+import {CHANGE_POSITION, START_BATTLE} from "@/vuex/mutations_types";
 
 import {
-  // EVENTS_TYPES,
+  EVENTS_TYPES,
   MAP_SCREEN_HEIGHT,
   MAP_SCREEN_WIDTH,
   PLAYER_HEIGHT,
@@ -11,7 +11,8 @@ import {
   SCROLL_DISTANCE,
   TILE_SIZE,
 } from "./world_constants";
-import {CHANGE_POSITION} from "@/vuex/mutations_types";
+import {WORLD_SCREEN} from "@/game/screen_constants";
+
 
 const RIGHT_SCROLL_START_POINT = MAP_SCREEN_WIDTH * (1 - SCROLL_DISTANCE);
 const LEFT_SCROLL_START_POINT = MAP_SCREEN_WIDTH * SCROLL_DISTANCE;
@@ -194,6 +195,68 @@ export default function handle_movement(world) {
       character_vertical_position: new_vertical_position,
       player_face_direction: new_player_face_direction
     });
+
+    // execute events
+    const events = store.getters.currentEvents;
+    const  final_real_horizontal_position = new_horizontal_position - map_scroll;
+    // events.forEach((event, index) => {
+    events.forEach(event => {
+
+      if (event.type) {
+        const {horizontal_position, vertical_position, type} = event;
+        const event_horizontal_position = horizontal_position*TILE_SIZE;
+        const event_vertical_position = vertical_position*TILE_SIZE;
+        const is_player_in_contact =
+          event_horizontal_position - PLAYER_WIDTH <= final_real_horizontal_position &&
+          final_real_horizontal_position <= event_horizontal_position + TILE_SIZE &&
+          event_vertical_position - PLAYER_HEIGHT <= new_vertical_position &&
+          new_vertical_position <= event_vertical_position + TILE_SIZE;
+
+        if (is_player_in_contact) {
+          switch (type) {
+            case (EVENTS_TYPES.ENEMY):
+              store.commit({
+                type: START_BATTLE,
+              });
+
+              /*store.dispatch({
+                type: START_BATTLE,
+                payload: {
+                  enemy_level: event.level,
+                  starting_text: event.starting_text,
+                  current_battle_index: index,
+                  character_horizontal_position: event.return_horizontal_position * TILE_SIZE,
+                  character_vertical_position: event.return_vertical_position * TILE_SIZE,
+                }
+              });*/
+              break;
+
+            /*case (EVENTS_TYPES.UPGRADE):
+              store.dispatch({
+                type: GET_UPGRADE,
+                payload: {
+                  ...event,
+                  index,
+                }
+              });
+              break;
+
+            case (EVENTS_TYPES.NEXT_LEVEL):
+              store.dispatch({
+                type: NEXT_LEVEL,
+                payload:{
+                  ...event,
+                }
+              });
+              break;*/
+
+            default:
+              return;
+          }
+        }
+      }
+    });
+
   }
 
   return world;

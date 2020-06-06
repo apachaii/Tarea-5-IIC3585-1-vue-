@@ -25,9 +25,9 @@
 </template>
 
 <script>
-  import {MAP_SCREEN_HEIGHT, TILE_SIZE} from "@/game/world_screen/world_constants";
+  import {MAP_SCREEN_HEIGHT, TILE_SIZE} from "@/game/screens/world_screen/world_constants";
   import get_tile_style from "./get_tile_style";
-  import Tree from "./tile_sprites/Tree.svg?vue-template";
+  import Tree from "./tile_sprites/Tree.svg";
 
   export default {
     name: "Map",

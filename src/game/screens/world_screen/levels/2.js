@@ -1,4 +1,4 @@
-import Background from '../../../assets/mountains-clipart-transparent-background-22.png';
+import Background from '../../../../assets/mountains-clipart-transparent-background-22.png';
 
 import {TILE_SIZE} from "../world_constants";
 

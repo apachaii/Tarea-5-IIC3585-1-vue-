@@ -1,5 +1,4 @@
 <template>
-
   <div
     id="player"
     :style="currentPlayerPosition"
@@ -10,16 +9,15 @@
 
 <script>
   import CarSprite from "@/game/general_components/CarSprite";
-  import {PLAYER_HEIGHT, PLAYER_HEIGHT_WIDTH_RATIO} from "@/game/world_screen/world_constants";
-  // import {LEVEL_COLORS} from "@/game/general_constants";
-
+  import {PLAYER_HEIGHT, PLAYER_HEIGHT_WIDTH_RATIO} from "@/game/screens/world_screen/world_constants";
+  import {LEVEL_COLORS} from "@/game/general_constants";
 
   export default {
     name: "Player",
     components: {CarSprite},
     computed: {
       currentPlayerPosition() {
-        const position = this.$store.getters.currentPlayerPosition;
+        const  position = this.$store.getters.currentPlayerPosition;
         return {
           left: `${position.character_horizontal_position}px`,
           top: `${position.character_vertical_position}px`,
@@ -27,10 +25,11 @@
       },
       sprite_style(){
         const position = this.$store.getters.currentPlayerPosition;
+        const { equipped_chasis, equipped_wheels } = this.$store.getters.currentEquipment;
 
         // TODO do the colors
-        const chasis_color = "#000000";
-        const wheels_color = "#000000";
+        const chasis_color = LEVEL_COLORS[equipped_chasis];
+        const wheels_color = LEVEL_COLORS[equipped_wheels];
 
         return{
           height: `${PLAYER_HEIGHT}px`,
