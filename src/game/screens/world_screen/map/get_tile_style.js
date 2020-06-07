@@ -1,5 +1,5 @@
 function get_tile_style(tile) {
-  if (tile === undefined) {
+  if (tile === undefined || !tile.background) {
     return {}
   }
   return {

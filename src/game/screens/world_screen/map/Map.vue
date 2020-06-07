@@ -15,7 +15,11 @@
           <fragment v-if="currentTilesInfo[tile] && currentTilesInfo[tile].sprite">
             <Tree
               v-if="currentTilesInfo[tile].sprite.form === 'tree'"
-              :style="{fill: currentTilesInfo[tile].sprite.fill}"
+              :style="{fill: currentTilesInfo[tile].sprite.fill,...tileStyle}"
+            />
+            <Bird
+              v-if="currentTilesInfo[tile].sprite.form === 'bird'"
+              :style="{fill: currentTilesInfo[tile].sprite.fill,...tileStyle}"
             />
           </fragment>
         </div>
@@ -28,11 +32,12 @@
   import {MAP_SCREEN_HEIGHT, TILE_SIZE} from "@/game/screens/world_screen/world_constants";
   import get_tile_style from "./get_tile_style";
   import Tree from "./tile_sprites/Tree.svg";
+  import Bird from "./tile_sprites/bird.svg";
 
   export default {
     name: "Map",
     components: {
-      Tree,
+      Tree, Bird,
     },
     data() {
       return {
@@ -75,7 +80,6 @@
     position: absolute;
     height: 100%;
     width: 100%;
-
   }
 
   #level_grid {

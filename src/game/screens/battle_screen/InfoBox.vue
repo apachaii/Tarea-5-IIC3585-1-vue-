@@ -36,6 +36,6 @@
  #info_box{
    position: absolute;
    border: solid black 1px ;
-   overflow-y: auto;
+   overflow-y: scroll;
  }
 </style>
