@@ -1,4 +1,4 @@
-import {EVENTS_TYPES, TILE_SIZE, UPGRADE_TYPES} from "../world_constants.js";
+import {EVENTS_TYPES, TILE_SIZE, UPGRADE_TYPES} from "../world_constants";
 
 const level = {
   start_position: {

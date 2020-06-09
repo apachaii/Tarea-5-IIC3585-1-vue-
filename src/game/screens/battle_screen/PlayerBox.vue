@@ -37,6 +37,8 @@
           height: BATTLE_BOX_HEIGHT,
           marginTop: BATTLE_BOX_VERTICAL_POSITION,
           marginLeft: PLAYER_VERTICAL_POSITION,
+
+          backgroundColor: "#ddd",
         }
       }
     },

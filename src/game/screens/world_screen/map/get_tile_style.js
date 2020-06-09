@@ -4,6 +4,7 @@ function get_tile_style(tile) {
   }
   return {
     background : tile.background.background,
+    opacity: tile.background.opacity,
   }
 }
 
