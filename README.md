@@ -1,24 +1,5 @@
-# tarea_en_vue
+To Start the game first download the dependencies with "yarn install", and then use the command "yarn run serve".
 
-## Project setup
-```
-yarn install
-```
+The game only works in firefox.
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+You use the arrow keys to move, and the battle command is show during battle.
