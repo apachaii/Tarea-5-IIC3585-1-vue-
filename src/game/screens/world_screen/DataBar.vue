@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import {MAP_SCREEN_WIDTH} from "../world_constants";
+  import {MAP_SCREEN_WIDTH} from "./world_constants";
 
   export default {
     name: "DataBar",

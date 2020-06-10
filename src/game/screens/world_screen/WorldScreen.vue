@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import DataBar from "./data_bar";
+  import DataBar from "./DataBar";
   import Map from "./map";
   import Player from "./Player";
   import Events from "./events";
