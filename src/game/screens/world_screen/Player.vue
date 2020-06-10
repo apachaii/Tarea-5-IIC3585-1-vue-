@@ -27,7 +27,6 @@
         const position = this.$store.getters.currentPlayerPosition;
         const { equipped_chasis, equipped_wheels } = this.$store.getters.currentEquipment;
 
-        // TODO do the colors
         const chasis_color = LEVEL_COLORS[equipped_chasis];
         const wheels_color = LEVEL_COLORS[equipped_wheels];
 

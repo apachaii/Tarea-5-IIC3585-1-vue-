@@ -85,8 +85,6 @@
   #level_grid {
     position: absolute;
     height: 100%;
-
-    left: 0; /* todo remove */
   }
 
   .tile {
